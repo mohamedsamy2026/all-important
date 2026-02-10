@@ -705,10 +705,11 @@ body {
   margin: 0 20px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .header {
     padding: 0 3rem;
-    position: relative;
+    position: fixed;
+
   }
 
   .humburger {
@@ -719,6 +720,7 @@ body {
     height: 45px;
     position: relative;
   }
+
 
   .humburger i {
     position: absolute;
@@ -731,6 +733,11 @@ body {
     width: max-content;
     height: max-content;
     opacity: 0;
+    color: white;
+    background-color: #01356d;
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 10px;
     transition: 0.3s ease;
   }
 
@@ -741,17 +748,23 @@ body {
 
   .navbar {
     position: absolute;
-    background-color: #333;
-    top: 80px;
+    background-color: #ffffff;
+    top: 130px;
     left: 0;
     width: 100%;
     padding: 0 3rem;
     opacity: 0;
     transition: 0.3s ease;
+
+    visibility: hidden;    /* يخليها مخفية تماماً عن المتصفح */
+    pointer-events: none;
   }
 
   .navbar.active {
     opacity: 1;
+    visibility: visible;   /* ترجع تتحس */
+    pointer-events: auto;  /* ترجع تستقبل دوسات */
+    top: 130px;            /* حركة انسيابية بسيطة لو حبيت */
   }
 
   .navbar ul {
@@ -771,6 +784,17 @@ body {
   .navbar ul li a {
     margin: 0;
   }
+
+
+  .header{
+            backdrop-filter: blur(0px) !important;
+        -webkit-backdrop-filter: blur(0px) !important;
+  }
+  .header:has(.navbar.active) {
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
 }
 
 
